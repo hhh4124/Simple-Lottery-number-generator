@@ -20,17 +20,16 @@ int main()
 		
 		srand(time(NULL));
 	
-	
+	//1번 선택 시 연금복권 숫자 추첨
 	if (select == 1)
 	{
-		for(i=0; i<6; i++)
+		for(i=0; i<6; i++) // 6개 숫자, 0~9번까지 랜덤 난수 생성 및 result 배열에 삽입
 		{
-			random_num = rand() % 10;
-			result[i] = random_num;
+			result[i] = rand() % 10;
 		}
 		
 	
-		printf("추첨 결과\n");
+		printf("추첨 결과\n"); //추첨 결과 출력
 	
 		for(j=0; j<6; j++)
 		{
@@ -40,19 +39,35 @@ int main()
 		
 	}
 	
+	// 2번 선택시 랜덤 로또 번호 추첨
 	else if (select == 2)
 	{
 	
-		for(i=0; i<6; i++)
+		for(i=0; i<6; i++) // 1 ~ 45까지 랜덤 난수 값 삽입
 		{	
-			random_num = rand() % 45 + 1;
-			result[i] = random_num;	
+			while(1)
+			{
+				int save;
+				result[i] = rand() % 45 + 1;
+				save = 0; //스위치 변수
+				
+				for(j=0; j<i; j++)
+				{
+					if(result[i] == result[j])
+					{
+						save = 1;
+						break; //중복값 확인 시 for문 종료
+					}
+				}
+				
+			}
+
 		}
 	
 	
-		for(j=0; j<6; j++)
+		for(j=0; j<6; j++) //Bubble sort 수행
 		{
-			for(k=0; k<5; k++)
+			for(k=0; k<5; k++) // k값이 0에서 1씩 증가하면서 4까지 반복
 			{
 				if(result[k] > result[k+1])
 				{
