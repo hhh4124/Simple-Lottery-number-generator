@@ -15,7 +15,6 @@ int main()
 		int j;
 		int k;
 		int temp;
-		int random_num;
 		int result[6];
 		
 		srand(time(NULL));
